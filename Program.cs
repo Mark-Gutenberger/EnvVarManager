@@ -1,3 +1,5 @@
+using System;
+
 namespace EnvVarManager {
 public partial class Program {
 	public static void Main(string[] args) {
@@ -13,6 +15,9 @@ public partial class Program {
 			return;
 		} else if (args[0] == "help") {
 			Help();
+			return;
+		} else if (args[0] == "set") {
+			Set(args);
 			return;
 		} else {
 			Blank($"Unknown command: {args[0]}");
