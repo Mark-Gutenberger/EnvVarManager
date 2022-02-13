@@ -1,14 +1,13 @@
 namespace EnvVarManager {
 public partial class Program {
 	public static void Main(string[] args) {
-		// if no args are passed...
+		// check to see if the program was called empty
 		if (args.Length == 0) {
-			// yell at the user
 			Blank($"No arguments passed.");
-			// if args are passed...
-		} else {
-			// pass Get()
+		} else if (args[0] == "get") {
 			Get(args);
+		} else if (args[0] == "list") {
+			List(args);
 		}
 	}
 }
