@@ -16,3 +16,8 @@ spaces_around_operators = true
 spaces_around_brackets = outside
 indent_brace_style = K&R
 encoding = utf-8
+
+[*.yml, *.yaml]
+indent_size = 2
+indent_style = space
+tab_width = 2
