@@ -6,13 +6,14 @@ namespace EnvVarManager {
 public class Program {
 	public static void Main(string[] args) {
 		string PATH_value = Environment.GetEnvironmentVariable("PATH");
-		if (PATH_value == null) {
-			Console.Error.WriteLine(
-				"PATH is not found. There is probably something wrong with your environment.");
-		} else {
+		try {
 			PATH_value = PATH_value.Replace(";", ";\r\n");
 			Console.WriteLine($"PATH_: \r\n {PATH_value}");
-			File.WriteAllText("PATH.txt", PATH_value);
+			File.WriteAllText($"PATH.txt", PATH_value);
+		} catch (Exception e) {
+			Console.Error.WriteLine(
+				$"PATH is not found. There is probably something wrong with your environment.\r\n");
+			Console.WriteLine($"Error:  {e.Message}");
 		}
 
 		// If necessary, create it.
