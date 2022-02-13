@@ -5,11 +5,15 @@ using System.Text;
 namespace EnvVarManager {
 public class Program {
 	public static void Main(string[] args) {
-		string PATH_value = Environment.GetEnvironmentVariable("PATH");
+		DateTime nowDT = DateTime.Now;
+		string now = nowDT.ToString("yyyy-MM-dd-HH-mm-ss");
+		// TODO: let user configure this
+		string EnvVarName = "path";
+		string PATH_value = Environment.GetEnvironmentVariable(EnvVarName);
 		try {
 			PATH_value = PATH_value.Replace(";", ";\r\n");
 			Console.WriteLine($"PATH_: \r\n {PATH_value}");
-			File.WriteAllText($"../../../PATH.txt", PATH_value);
+			File.WriteAllText($"{EnvVarName}_{now}.txt", PATH_value);
 		} catch (Exception e) {
 			Console.Error.WriteLine(
 				$"PATH is not found. There is probably something wrong with your environment.\r\n");
