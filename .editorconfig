@@ -16,4 +16,3 @@ spaces_around_operators = true
 spaces_around_brackets = outside
 indent_brace_style = K&R
 encoding = utf-8
-
