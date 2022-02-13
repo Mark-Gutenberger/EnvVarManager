@@ -10,7 +10,7 @@ public partial class Program {
 		string EnvVarVal = Environment.GetEnvironmentVariable(EnvVarName);
 		try {
 			EnvVarVal = EnvVarVal.Replace(";", ";\r\n");
-			Console.WriteLine($"PATH_: \r\n {EnvVarVal}");
+			Console.WriteLine($"Name: {EnvVarName} \r\nValue: \r\n{EnvVarVal}");
 			File.WriteAllText($"{EnvVarName}_{now}.txt", EnvVarVal);
 		} catch (Exception e) {
 			Console.Error.WriteLine(
