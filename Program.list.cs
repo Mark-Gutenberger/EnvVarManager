@@ -8,13 +8,15 @@ public partial class Program {
 		try {
 			string[] envVars = Environment.GetEnvironmentVariables().Keys.Cast<string>().ToArray();
 			foreach (string envVar in envVars) {
-				Console.WriteLine($"Enviromental Variables:");
+				Console.WriteLine($"Environmental Variables:");
 				Console.WriteLine($"{indent()}{envVar}");
+				return;
 			}
 		} catch (Exception error) {
 			Console.Error.WriteLine($"Error: Unhandled error");
 			Console.Error.WriteLine($"\"Program.List()\" was called, but returned null.");
 			Console.WriteLine($"Error: {error.Message}");
+			return;
 		}
 	}
 }

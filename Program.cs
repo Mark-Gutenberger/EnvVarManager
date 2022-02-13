@@ -4,10 +4,18 @@ public partial class Program {
 		// check to see if the program was called empty
 		if (args.Length == 0) {
 			Blank($"No arguments passed.");
+			return;
 		} else if (args[0] == "get") {
 			Get(args);
+			return;
 		} else if (args[0] == "list") {
 			List(args);
+			return;
+		} else if (args[0] == "help") {
+			Help();
+			return;
+		} else {
+			Blank($"Unknown command: {args[0]}");
 		}
 	}
 }

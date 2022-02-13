@@ -10,9 +10,11 @@ public partial class Program {
 			EnvVarVal = EnvVarVal.Replace(";", ";\r\n");
 			Console.WriteLine($"Name: {EnvVarName} \r\nValue: \r\n{EnvVarVal}");
 			File.WriteAllText($"{EnvVarName}_{now}.txt", EnvVarVal);
+			return;
 		} catch (Exception /*error*/) {
-			Console.Error.WriteLine($"Error: enviromental variable \"{EnvVarName}\" not found.");
+			Console.Error.WriteLine($"Error: environmental variable \"{EnvVarName}\" not found.");
 			// Console.WriteLine($"Error: {error.Message}");
+			return;
 		}
 	}
 }
