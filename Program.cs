@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EnvVarManager {
 public partial class Program {
-	public void HelpMe() {
+	public static void HelpMe() {
 		Console.WriteLine("Usage: EnvVarManager.exe <command> [<args>]");
 		Console.WriteLine("Commands:");
 		Console.WriteLine("  set <name> <value>");
@@ -15,25 +15,17 @@ public partial class Program {
 		return;
 	}
 	public static void Main(string[] args) {
-		// you know... C# stuff...
-		Program Global = new Program();
 		// if no args are passed...
 		if (args.Length == 0) {
 			// yell at the user
 			Console.WriteLine("No arguments passed.");
-			Global.HelpMe();
+			HelpMe();
 			// if args are passed...
 		} else {
-			// real simple, get the time for logging, etc..
-			// no need to declare this higher up, as that will only lag the
-			// program, maybe by a few milliseconds, but speed is still a
-			// comodity.
+			// get the time for logging purposes
 			DateTime nowDT = DateTime.Now;
 			string now = nowDT.ToString("yyyy-MM-dd-HH-mm-ss");
-
-			// grab the passed argument for the env var name
 			string EnvVarName = args[1];
-
 			string EnvVarVal = Environment.GetEnvironmentVariable(EnvVarName);
 			try {
 				EnvVarVal = EnvVarVal.Replace(";", ";\r\n");
@@ -41,7 +33,7 @@ public partial class Program {
 				File.WriteAllText($"{EnvVarName}_{now}.txt", EnvVarVal);
 			} catch (Exception e) {
 				Console.Error.WriteLine(
-					$"Error: env variable \"{EnvVarName}\" not found.");
+					$"Error: enviromental variable \"{EnvVarName}\" not found.");
 				Console.WriteLine($"       {e.Message}");
 			}
 		}
