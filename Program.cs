@@ -5,16 +5,15 @@ using System.Text;
 namespace EnvVarManager {
 public class Program {
 	public static void Main(string[] args) {
-		// Console.WriteLine("Hello World!");
-		// bool toDelete = false;
-
-		// string stdin = Console.ReadLine();
-
-		// Check whether the environment variable exists.
 		string PATH_value = Environment.GetEnvironmentVariable("PATH");
-		PATH_value = PATH_value.Replace(";", "\r\n");
-		Console.WriteLine($"PATH_: \r\n {PATH_value}");
-		File.WriteAllText("PATH.txt", PATH_value);
+		if (PATH_value == null) {
+			Console.Error.WriteLine(
+				"PATH is not found. There is probably something wrong with your environment.");
+		} else {
+			PATH_value = PATH_value.Replace(";", ";\r\n");
+			Console.WriteLine($"PATH_: \r\n {PATH_value}");
+			File.WriteAllText("PATH.txt", PATH_value);
+		}
 
 		// If necessary, create it.
 		// if (value == null) {
@@ -50,18 +49,4 @@ public class Program {
 		// }
 	}
 }
-// The example displays the following output if run on a Windows system:
-//      Test1: Value1
-//
-//      Attempting to retrieve Test1 from:
-//         Process: found
-//         User: not found
-//         Machine: not found
-//
-//      Test1 has been deleted.
-//
-// The example displays the following output if run on a Unix-based system:
-//      Test1: Value1
-//
-//      Test1 has been deleted.
 }
