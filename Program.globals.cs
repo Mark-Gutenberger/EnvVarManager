@@ -11,8 +11,8 @@ public partial class Program {
 	// alright, now lets set up a handler for if the program is called without any params
 	public static void Blank(string error) {
 		string execPath = AppDomain.CurrentDomain.BaseDirectory;
-		Console.WriteLine($"Executable location: \r\n{indent()}{execPath}EnvVarManager.exe");
-		Console.WriteLine($"Error: {error}");
+		Console.WriteLine($"Executable location: \r\n{indent()}{execPath}EnvVarManager.exe\r\n");
+		Console.WriteLine($"Error: {error}\r\n");
 		Console.WriteLine($"Usage: EnvVarManager.exe <command> [<args>]");
 		Console.WriteLine($"Commands:");
 		Console.WriteLine($"{indent()}set <name> <value>");
@@ -20,7 +20,7 @@ public partial class Program {
 		Console.WriteLine($"{indent()}list [<args>]");
 		Console.WriteLine($"{indent()}delete <name>");
 		Console.WriteLine($"{indent()}help");
-		Console.WriteLine($"For more help run: \"EnvVarManager.exe help\"");
+		Console.WriteLine($"For more help run: \"EnvVarManager.exe help\"\r\n");
 		return;
 	}
 	// parse local time to a string for logging purposes

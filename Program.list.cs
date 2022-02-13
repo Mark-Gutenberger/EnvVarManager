@@ -6,11 +6,12 @@ namespace EnvVarManager {
 public partial class Program {
 	public static void List(string[] args) {
 		try {
-			string[] envVars = Environment.GetEnvironmentVariables().Keys.Cast<string>().ToArray();
-			foreach (string envVar in envVars) {
-				Console.WriteLine($"Environmental Variables:");
+			string[] envVarsArr = Environment.GetEnvironmentVariables().Keys.Cast<string>().ToArray();
+			string envVarsStr = string.Join("\r\n", envVarsArr);
+			Console.WriteLine($"Environmental Variables:");
+			foreach (string envVar in envVarsArr) {
 				Console.WriteLine($"{indent()}{envVar}");
-				return;
+				File.WriteAllText($"AllEnvVars_{now}.txt", envVarsStr);
 			}
 		} catch (Exception error) {
 			Console.Error.WriteLine($"Error: Unhandled error");
@@ -18,6 +19,7 @@ public partial class Program {
 			Console.WriteLine($"Error: {error.Message}");
 			return;
 		}
+		return;
 	}
 }
 }
